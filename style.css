@@ -1,0 +1,58 @@
+body {
+    margin: 0;
+    padding: 40px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-image: url("plagiarism\ img.jpeg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    color: #ffffff;
+    min-height: 100vh;
+    backdrop-filter: brightness(0.7);
+}
+
+h2, h3, h4, p {
+    color: #ffffff;
+}
+
+form {
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 30px;
+    border-radius: 12px;
+    max-width: 800px;
+    margin: auto;
+}
+
+textarea {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 8px;
+    border: none;
+    background-color: #f8f8f8;
+    color: #000;
+}
+
+input[type="submit"],
+button {
+    background-color: #800080; /* Purple */
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    font-size: 14px;
+    margin: 8px 5px 0 0;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+input[type="file"] {
+    color: white;
+    margin-top: 10px;
+}
+
+pre {
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 10px;
+    border-radius: 8px;
+    white-space: pre-wrap;
+}

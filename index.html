@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Plagiarism Checker</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h2>LexiGuard-NLP Based Plagiarism Checker</h2>
+    <form action="/" method="POST" enctype="multipart/form-data">
+        <p>Input Text:</p>
+        <textarea name="query" rows="8" cols="60" autofocus required>{{ query }}</textarea>
+
+        {% if compare_two %}
+            <p>Second Text:</p>
+            <textarea name="text2" rows="8" cols="60">{{ text2 }}</textarea>
+        {% endif %}
+
+        <br><br>
+        <input type="submit" name="submit" value="CHECK PLAGIARISM">
+        <button type="submit" name="clear" value="1">Clear Text</button>
+        <input type="file" name="file" accept=".txt">
+        <button type="submit" name="view_db" value="1">View Database</button>
+        <button type="submit" name="compare_two" value="1">Compare Two Texts</button>
+    </form>
+
+    <br>
+    {% if output %}
+        <h3>{{ output }}</h3>
+    {% endif %}
+
+    {% if show_db %}
+        <h4>📚 Database Content:</h4>
+        <pre>{{ database }}</pre>
+    {% endif %}
+</body>
+</html>

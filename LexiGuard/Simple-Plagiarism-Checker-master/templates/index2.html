@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>LexiGuard - check manually</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+        textarea {
+            width: 100%;
+            padding: 10px;
+            font-size: 1em;
+        }
+        button, input[type="submit"] {
+            margin: 5px;
+            padding: 10px 20px;
+            font-size: 1em;
+        }
+        h2, h3, h4 {
+            color: #ffffff;
+        }
+        mark {
+            background-color: yellow;
+            font-weight: bold;
+        }
+        .highlighted-box {
+            border: 1px solid #ccc;
+            padding: 10px;
+            background-color: #fff;
+            white-space: pre-wrap;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>LexiGuard - NLP Based Plagiarism Checker (check manually)</h2>
+
+    <!-- Button to go back to index.html -->
+    <a href="/"><button type="button">Go to Main Page</button></a>
+    <a href="/history">
+        <button style="position:absolute; top:20px; right:20px; padding:8px 16px;">📜 History</button>
+      </a>
+      
+
+    <!-- Form submits to /alt -->
+    <form action="/alt" method="POST" enctype="multipart/form-data">
+        <p><strong>first Text:</strong></p>
+        <textarea name="query" rows="8" required>{{ query }}</textarea>
+
+        <p><strong>Second Text:</strong></p>
+        <textarea name="text2" rows="8">{{ text2 }}</textarea>
+
+        <br>
+        <input type="submit" name="submit" value="CHECK PLAGIARISM">
+    </form>
+
+    {% if output %}
+        <h3>{{ output }}</h3>
+    {% endif %}
+
+    {% if highlighted_text1 %}
+    <h4>🔍 Highlighted Matches in first Text:</h4>
+    <div class="highlighted-box">{{ highlighted_text1|safe }}</div>
+{% endif %}
+
+{% if highlighted_text2 %}
+    <h4>🔍 Highlighted Matches in Second Text:</h4>
+    <div class="highlighted-box">{{ highlighted_text2|safe }}</div>
+{% endif %}
+
+
+</body>
+</html>

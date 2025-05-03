@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>LexiGuard History</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 40px;
+            background: #f4f4f4;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+        }
+        th, td {
+            padding: 12px;
+            border-bottom: 1px solid #ccc;
+            text-align: left;
+        }
+        th {
+            background-color: #6a0dad;
+            color: white;
+        }
+        mark {
+            background-color: #ffeb3b;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="top-bar">
+        <div class="left-buttons">
+            <a href="{{ url_for('main_page') }}">
+                <button class="nav-button">🏠 Back to Main</button>
+            </a>
+        </div>
+        
+    <h1>🕘 Your Plagiarism Check History</h1>
+    {% if history %}
+        <table>
+            <thead>
+                <tr>
+                    <th>Checked Text</th>
+                    <th>Plagiarism %</th>
+                    <th>Timestamp</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for entry in history %}
+                    <tr>
+                        <td>{{ entry[0][:200] }}{% if entry[0]|length > 200 %}...{% endif %}</td>
+                        <td>{{ entry[1]|round(2) }}%</td>
+                        <td>{{ entry[2] }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>No history found.</p>
+    {% endif %}
+</body>
+</html>

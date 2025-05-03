@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>LexiGuard - Web Plagiarism Search</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h2>LexiGuard - Google-based Plagiarism Checker</h2>
+
+    <!-- 🔗 Navigation -->
+<div class="top-bar">
+    <div class="left-buttons">
+        <a href="{{ url_for('main_page') }}">
+            <button class="nav-button">🏠 Back to Main</button>
+        </a>
+    </div>
+    <div class="right-buttons">
+        <a href="/history">
+            <button class="nav-button">📜 History</button>
+        </a>
+    </div>
+</div>
+
+
+    <!-- 📄 Manual Text Input -->
+    <form action="/web-check" method="POST" enctype="multipart/form-data">
+        <p><strong>Enter Text to Check:</strong></p>
+        <textarea name="query" rows="8" cols="60" required>{{ query }}</textarea>
+
+        <p><strong>OR Upload a Text File:</strong></p>
+        <input type="file" name="file" accept=".txt">
+
+        <br><br>
+        <button type="submit">🔍 Check for Plagiarism on Web</button>
+    </form>
+
+    <br>
+
+    {% if query %}
+        {% if match_percent %}
+            <h3>🌐 Estimated Web Plagiarism: {{ match_percent }}%</h3>
+            <progress value="{{ match_percent }}" max="100"></progress>
+        {% endif %}
+
+        <!-- ✅ NEW: Semantic & Lexical Similarity Breakdown -->
+        {% if result %}
+            <h3>Results:</h3>
+            <p><strong>Lexical Similarity:</strong> {{ result.lexical_similarity }}%</p>
+            <p><strong>Semantic Similarity:</strong> {{ result.semantic_similarity }}%</p>
+            <p><strong>Final Combined Score:</strong> {{ result.final_score }}%</p>
+        {% endif %}
+
+        <h3>🔎 Top Results from Google:</h3>
+        {% if results %}
+            <ul>
+                {% for item in results %}
+                    <li>
+                        <a href="{{ item.link }}" target="_blank">{{ item.title }}</a><br>
+                        <small>{{ item.snippet }}</small>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>No results found or the text may be original.</p>
+        {% endif %}
+    {% endif %}
+</body>
+</html>

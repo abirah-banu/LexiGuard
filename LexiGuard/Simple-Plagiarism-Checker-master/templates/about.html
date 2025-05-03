@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block title %}About - LexiGuard{% endblock %}
+
+{% block content %}
+<div class="container" style="text-align: center;">
+    <h1>About LexiGuard</h1>
+
+<!-- GIF Image -->
+<img src="{{ url_for('static', filename='images/PlagiarismShadow.gif') }}" 
+     alt="Plagiarism Detection GIF" 
+     style="width: 50%; height: auto; margin-top: 20px;">
+
+    
+    <p>
+        LexiGuard is a powerful and intelligent plagiarism detection system built to uphold academic integrity and promote original thinking. Whether you are a student striving for honest academic performance, a teacher evaluating assignments, a researcher preparing a thesis, or a content creator protecting your work, LexiGuard is your all-in-one solution.
+
+Our platform combines both internal comparison (between uploaded documents) and external web-based checks using Google APIs to identify content overlap and possible plagiarism. It offers a seamless experience with features like drag-and-drop uploads, real-time similarity scoring, visually highlighted matches, source identification, and downloadable plagiarism reports.
+
+LexiGuard doesn’t just stop at detection — it educates users about proper citation, encourages ethical writing, and empowers individuals to create with confidence. The system is designed to be fast, reliable, and user-friendly, with support for multiple file types, multi-language detection, and a modern, responsive interface.
+
+Whether you are managing a classroom, curating a content platform, or simply aiming for personal excellence in your work, LexiGuard provides the tools you need to maintain originality and prevent unintentional duplication. At LexiGuard, we believe that knowledge should be protected and that credit should always go where it’s due.
+
+Join thousands of users who trust LexiGuard to safeguard their writing — because your words matter.
+    </p>
+</div>
+{% endblock %}

@@ -1,0 +1,131 @@
+body {
+    margin: 0;
+    padding: 40px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-image: url("plagiarism img.jpeg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    color: #ffffff;
+    min-height: 100vh;
+    backdrop-filter: brightness(0.7);
+}
+
+h2, h3, h4, p {
+    color: #ffffff;
+}
+
+form {
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 30px;
+    border-radius: 12px;
+    max-width: 800px;
+    margin: auto;
+}
+
+textarea {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 8px;
+    border: none;
+    background-color: #f8f8f8;
+    color: #000;
+}
+
+input[type="submit"],
+button {
+    background-color: #800080; /* Purple */
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    font-size: 14px;
+    margin: 8px 5px 0 0;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+input[type="file"] {
+    color: white;
+    margin-top: 10px;
+}
+
+pre {
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 10px;
+    border-radius: 8px;
+    white-space: pre-wrap;
+}
+
+/* Highlighted text styles */
+.highlighted-text {
+    background-color: #ffff99; /* Light yellow */
+    padding: 5px;
+    border-radius: 5px;
+    color: #000;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+/* Similarity gauge */
+.similarity-result {
+    margin-top: 20px;
+}
+
+.similarity-result.high {
+    background-color: rgba(0, 255, 0, 0.3); /* Light green */
+}
+
+.similarity-result.medium {
+    background-color: rgba(255, 255, 0, 0.3); /* Light yellow */
+}
+
+.similarity-result h3 {
+    font-size: 18px;
+}
+
+progress {
+    width: 100%;
+    height: 20px;
+    margin-top: 10px;
+}
+
+.nav-button {
+    background-color: #800080;
+    color: #fff;
+    padding: 12px 20px;
+    font-size: 14px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    text-align: center;
+}
+
+.nav-button:hover {
+    background-color: #7a4d9f; /* Slightly darker purple */
+}
+
+/* Top button positioning */
+.top-button {
+    position: fixed;
+    top: 10px;
+    right: 20px;
+    z-index: 9999;
+}
+
+.top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    top: 10px;
+    left: 20px;
+    right: 20px;
+    z-index: 9999;
+}
+
+.left-buttons,
+.right-buttons {
+    display: flex;
+    gap: 10px;
+}

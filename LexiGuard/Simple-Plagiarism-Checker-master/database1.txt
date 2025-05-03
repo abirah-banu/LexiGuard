@@ -1,0 +1,6 @@
+Artificial Intelligence, or AI, refers to the simulation of human intelligence in machines that are programmed to think and act like humans. AI is used in various fields such as healthcare, finance, education, and transportation. Machine Learning, a subset of AI, enables systems to learn from data and improve over time without being explicitly programmed.
+
+Natural Language Processing (NLP) is a branch of AI that focuses on enabling machines to understand, interpret, and generate human language. NLP is widely used in applications like virtual assistants, translation tools, and sentiment analysis.
+
+Plagiarism detection tools use NLP techniques and text similarity algorithms to identify copied content. These tools compare a student's submission against a database of academic papers, websites, and articles to find matches or similarities.
+

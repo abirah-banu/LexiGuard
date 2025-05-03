@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Plagiarism Checker</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h2>LexiGuard - NLP Based Plagiarism Checker</h2>
+
+    <!-- 🔗 Navigation -->
+    <div class="top-button">
+        <a href="{{ url_for('alternate_page') }}">
+            <button class="nav-button">📄 Click here to check manually</button>
+        </a>
+        <a href="{{ url_for('web_check') }}">
+            <button class="nav-button">🌐 Web Plagiarism Check</button>
+        </a>
+        <a href="/history">
+            <button class="btn btn-secondary">📜 History</button>
+        </a>
+
+        <form action="{{ url_for('logout') }}" method="post" style="display: inline;">
+            <button type="submit" class="btn btn-danger">Logout</button>
+        </form>
+                
+    </div>
+
+    <br><hr><br>
+
+    <!-- 📁 File Upload Comparison -->
+    <form action="/check" method="POST" enctype="multipart/form-data">
+        <p><strong>Upload File 1:</strong></p>
+        <input type="file" name="file1" accept=".txt" required>
+
+        <p><strong>Upload File 2:</strong></p>
+        <input type="file" name="file2" accept=".txt" required>
+
+        <br><br>
+        <input type="submit" name="check_files" value="Check Plagiarism from Files">
+    </form>
+
+    <!-- 📄 Display File Texts -->
+    {% if file1_text or file2_text %}
+        <h3>📂 File Contents:</h3>
+
+        <p><strong>Text from File 1:</strong></p>
+        <textarea rows="8" cols="60" readonly>{{ file1_text }}</textarea>
+
+        <p><strong>Text from File 2:</strong></p>
+        <textarea rows="8" cols="60" readonly>{{ file2_text }}</textarea>
+    {% endif %}
+
+    <br>
+
+    <!-- 🧾 Output -->
+    {% if output %}
+        <h3>{{ output }}</h3>
+    {% endif %}
+
+    <!-- 📊 Similarity Gauge -->
+    {% if match_percent %}
+        <div class="similarity-result 
+            {% if match_percent >= 70 %}
+                high
+            {% elif match_percent >= 40 %}
+                medium
+            {% endif %}">
+            <h3>Plagiarism Detected: {{ match_percent }}%</h3>
+            <progress value="{{ match_percent }}" max="100"></progress>
+        </div>
+    {% endif %}
+
+    <!-- ✨ Highlighted Text Output -->
+    {% if highlighted_text1 and highlighted_text2 %}
+        <h4>Highlighted Result:</h4>
+
+        <h5>File 1 Highlighted:</h5>
+        <div class="highlighted-text">{{ highlighted_text1 | safe }}</div>
+
+        <h5>File 2 Highlighted:</h5>
+        <div class="highlighted-text">{{ highlighted_text2 | safe }}</div>
+    {% endif %}
+
+    <!-- 📄 Query Text for Manual Check -->
+    {% if query %}
+        <h3>Query Text:</h3>
+        <textarea rows="8" cols="60" readonly>{{ query }}</textarea>
+    {% endif %}
+
+</body>
+</html>
